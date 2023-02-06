@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ url_for('static', filename='theme.css') }}" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top bg-dark">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">pix2pix: Image-to-image translation with a conditional GAN</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <!--
+            <li><a href="">Home</a></li>
+            -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="jumbotron">
+        <h1> The Pix2Pix translation output </h1>
+        <p> </p>
+
+    
+    <!-- Displaing images as cards-->
+    <div class="card" style="width: 18rem;">
+      <h2 class="card-title"> Input <br> Facade segmentated Image</h2>
+
+      <img src="{{ input_path }}" alt="Input Image missing"/>
+      <div class="card-body">
+      </div>
+    </div>
+
+    <div class=".col-md-4">        
+    <!-- Displaing images as cards-->
+    <div class="card" style="width: 18rem;">
+      <h2 class="card-title">Generated output RGB Image</h2>
+
+      <img src="{{ output_path }}" alt="output Image missing"/>
+      <div class="card-body">
+      </div>
+    </div>
+
+  </div>
+    
+
+      </div>
+      </div>
+
+      
+  </body>
+</html>
+

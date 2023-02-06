@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ url_for('static', filename='theme.css') }}" rel="stylesheet">
+
+
+    <script>
+      function validateForm() {
+        let x = document.forms["myForm"]["question"].value;
+        if (x == "") {
+          alert("Question title must be filled out");
+          return false;
+        }
+      }
+
+
+
+
+      function checkWordCount(){
+        s = document.getElementById("textArea").value;
+        s = s.replace(/(^\s*)|(\s*$)/gi,"");
+        s = s.replace(/[ ]{2,}/gi," ");
+        s = s.replace(/\n /,"\n");
+        if (s.split(' ').length <= 20) {
+            alert("Please enter atleast 20 words");
+    return false;
+        }
+    }
+      </script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Pix2Pix: Image-to-image translation with a conditional GAN</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <!--
+            <li><a href="">Home</a></li>
+            -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+
+      <!--quesiton and answer page-->
+
+    <div class="page-header">
+      <h1>Provide Facade segmentation Image as below examples</h1>
+    </div>
+
+    <form action='/' method="post" enctype="multipart/form-data">
+      <div class="form-group"> 
+          <label> Select Image</label>
+            <div class="custom-file">
+              <input type="file" accept="image/*" class="custom-file-input" id="image" name="image">
+              <label class="custom-file-label" for="image"   > Select Image...</label>
+            </div>
+      </div>
+      <input class="btn btn-outline-primary" type="submit" value="Submit">
+      <br><br><br>
+    </form> 
+              
+            
+
+
+            <!-- /container -->
+
+            <div class="card" style="width: 18rem;">
+              <h5 class="card-title">Example Facade Image 1</h5>
+
+              <img class="card-img-top" src="/static/images/3.jpg" alt="Card image cap">
+              <h5 class="card-title">Example Facade Image 2</h5>
+
+              <img class="card-img-top" src="/static/images/2.jpg" alt="Card image cap">
+
+            </div>
+
+    
+            
+      </div>
+    </div>
+
+            
+    
+    
+    
+  </body>
+</html>
+<script>
+  // Add the following code if you want the name of the file appear on select
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+  </script>
